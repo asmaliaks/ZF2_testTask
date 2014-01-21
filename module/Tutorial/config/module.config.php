@@ -27,7 +27,7 @@ return array(
             'application' => array(
                 'type'    => 'Literal',
                 'options' => array(
-                    'route'    => '/application',
+                    'route'    => '/tutorial',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Tutorial\Controller',
                         'controller'    => 'Index',
@@ -50,6 +50,17 @@ return array(
                     ),
                 ),
             ),
+            'blogPost' => array(
+                'type' => 'Segment',
+                 'options' => array(
+                     'route' => '/blog/post[/:postId]',
+                     'defaults' => array(
+                         'controller' => 'Tutorial\Controller\Blog',
+                         'action' => 'post',
+                         'postId' => 1
+                     )
+                 )
+            )
         ),
     ),
     'service_manager' => array(
@@ -73,7 +84,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Tutorial\Controller\Index' => 'Tutorial\Controller\IndexController'
+            'Tutorial\Controller\Index' => 'Tutorial\Controller\IndexController',
+            'Tutorial\Controller\Blog'  => 'Tutorial\Controller\BlogController'
         ),
     ),
     'view_manager' => array(
