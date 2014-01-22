@@ -20,7 +20,9 @@ class PostController extends AbstractActionController
             'content' => $content
             
         ));
-       
+       $widgetObj = new ViewModel();
+       $widgetObj->setTemplate('post/widget');
+       $viewObj->addChild($widgetObj, 'widget');
         return $viewObj;
     }
 }
