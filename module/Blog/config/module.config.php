@@ -15,7 +15,7 @@ return array(
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
-                        'controller' => 'Tutorial\Controller\Index',
+                        'controller' => 'Blog\Controller\Index',
                         'action'     => 'index',
                     ),
                 ),
@@ -27,9 +27,9 @@ return array(
             'application' => array(
                 'type'    => 'Literal',
                 'options' => array(
-                    'route'    => '/tutorial',
+                    'route'    => '/blog',
                     'defaults' => array(
-                        '__NAMESPACE__' => 'Tutorial\Controller',
+                        '__NAMESPACE__' => 'Blog\Controller',
                         'controller'    => 'Index',
                         'action'        => 'index',
                     ),
@@ -55,7 +55,7 @@ return array(
                  'options' => array(
                      'route' => '/post/view[/:postId]',
                      'defaults' => array(
-                         'controller' => 'Tutorial\Controller\Post',
+                         'controller' => 'Blog\Controller\Post',
                          'action' => 'view',
                          'postId' => 1
                      )
@@ -84,8 +84,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Tutorial\Controller\Index' => 'Tutorial\Controller\IndexController',
-            'Tutorial\Controller\Post'  => 'Tutorial\Controller\PostController'
+            'Blog\Controller\Index' => 'Blog\Controller\IndexController',
+            'Blog\Controller\Post'  => 'Blog\Controller\PostController'
         ),
     ),
     'view_manager' => array(
@@ -96,10 +96,10 @@ return array(
         'exception_template'       => 'error/index',
         'template_map' => array(
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'tutorial/post/view'      => __DIR__ . '/../view/tutorial/post/view.phtml',
+            'blog/post/view'      => __DIR__ . '/../view/blog/post/view.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
-            'post/widget'             => __DIR__ . '/../view/tutorial/post/widget.phtml',
+            'post/widget'             => __DIR__ . '/../view/blog/post/widget.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
