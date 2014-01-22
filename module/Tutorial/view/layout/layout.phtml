@@ -10,10 +10,16 @@
     <link rel="shortcut icon" href="/img/logo.ico" type="image/png">
 
     <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap.css" rel="stylesheet">
+    <!--<link href="/css/bootstrap.css" rel="stylesheet">-->
+    <?php
+       echo $this->HeadScript()->appendFile("/js/jquery-1.10.2.js", $type="text/javascript")
+                               ->appendFile("/js/bootstrap.js", $type="text/javascript");
+       echo $this->HeadLink()->appendStylesheet("/css/bootstrap.css")
+                             ->appendStylesheet("/css/small-business.css");
+    ?>
 
     <!-- Add custom CSS here -->
-    <link href="/css/small-business.css" rel="stylesheet">
+    <!--<link href="/css/small-business.css" rel="stylesheet">-->
 
 </head>
 
@@ -39,13 +45,13 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/">Главная</a>
                     </li>
-                    <li><a href="post/view">Статьи</a>
+                    <li><a href="<?= $this->url('blogPost', array('action' => 'view'))?>">Статьи</a>
                     </li>
-                    <li><a href="#contact">Категории</a>
+                    <li><a href="/">Категории</a>
                     </li>
-                    <li><a href="#contact">Войти</a>
+                    <li><a href="/">Войти</a>
                     </li>
-                    <li><a href="#contact">Регестрация</a>
+                    <li><a href="/">Регестрация</a>
                     </li>
                 </ul>
                 
@@ -76,8 +82,8 @@
     <!-- /.container -->
 
     <!-- JavaScript -->
-    <script src="/js/jquery-1.10.2.js"></script>
-    <script src="/js/bootstrap.js"></script>
+<!--    <script src="/js/jquery-1.10.2.js"></script>
+    <script src="/js/bootstrap.js"></script>-->
 
 </body>
 
