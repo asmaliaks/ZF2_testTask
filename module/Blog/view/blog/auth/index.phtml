@@ -1,0 +1,36 @@
+<title>Авторизация</title>
+<div class="page-header">
+    <h1>Авторизация</h1>
+</div >
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="well">
+                    <div class="row">
+                    <div class="col-lg-8">
+                        <p>Оу вачигос! Тумороу  оу вачигосб бэбэ еээ!</p>
+                    </div>
+                    </div>    
+                </div>
+            </div>
+        </div>
+<div class="container">
+    <div class="row">
+     <?
+      $form = $this->form;
+      $form->setAttribute('action', $this->url('index'));
+      $form->prepare();
+      echo "<div class='col-lg-2'>";
+      echo $this->form()->openTag($form)."\n";
+     // echo $this->formLabel($form->get('login'))."\n";
+      echo $this->formInput($form->get('login'))."\n</br>";
+      echo "</div>";
+      echo "<div class='col-lg-2'>";
+      //echo $this->formLabel($form->get('password'));
+      echo $this->formInput($form->get('password'))."\n</br>";
+      echo "</div>";
+      /*submit*/
+      echo $this->formInput($form->get('submit'));
+      echo $this->form()->closeTag($form)."\n";
+     ?>
+    </div>
+</div>

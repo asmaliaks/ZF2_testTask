@@ -51,15 +51,35 @@ return array(
                 ),
             ),
             'blogPost' => array(
-                'type' => 'Segment',
+                'type'     => 'Segment',
                  'options' => array(
-                     'route' => '/post/view[/:postId]',
+                     'route'    => '/post/view[/:postId]',
                      'defaults' => array(
                          'controller' => 'Blog\Controller\Post',
-                         'action' => 'view',
-                         'postId' => 1
+                         'action'     => 'view',
+                         'postId'     => 1
                      )
                  )
+            ),
+            'index' => array(
+                'type'    => 'Segment',
+                'options' => array(
+                    'route'    => '/auth/index',
+                    'defaults' => array(
+                        'controller' => 'Blog\Controller\Auth',
+                        'action'     => 'index'
+                    )
+                )
+            ),
+            'registration' => array(
+                'type'     => 'Segment',
+                'options'  => array(
+                    'route'    => '/registration/index',
+                    'defaults' => array(
+                        'controller' => 'Blog\Controller\Registration',
+                        'action'     => 'index'
+                    )
+                )
             )
         ),
     ),
@@ -85,7 +105,9 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Blog\Controller\Index' => 'Blog\Controller\IndexController',
-            'Blog\Controller\Post'  => 'Blog\Controller\PostController'
+            'Blog\Controller\Post'  => 'Blog\Controller\PostController',
+            'Blog\Controller\Auth'  => 'Blog\Controller\AuthController',
+            'Blog\Controller\Registration' => 'Blog\Controller\RegistrationController'
         ),
     ),
     'view_manager' => array(
