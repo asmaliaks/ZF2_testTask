@@ -37,11 +37,18 @@
       echo $this->formInput($form->get('pass_re_enter'));
       echo '</div></div></br>';
       echo '<div class="row"><div class="col-lg-3">';
+      echo $this->formCaptcha($form->get('captcha'));
+      echo '</div></div></br>';
+      echo '<div class="row"><div class="col-lg-3">';
       echo $this->formInput($form->get('submit'));
       echo '</div></div></br>';
       echo $this->form()->closeTag($form);
       echo '</div>';
 
+//      echo $this->form()->openTag($form);
+//      echo $this->formCollection($form);
+//      echo $this->form()->closeTag($form);
+      
      ?>
     </div>
 </div>

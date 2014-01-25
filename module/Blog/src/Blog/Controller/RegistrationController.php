@@ -10,6 +10,7 @@ class RegistrationController extends AbstractActionController {
     
     public function indexAction(){
         $form = new RegistrationForm();
+        //$form = $this->getServiceLocator()->get('registrationform');
         return array('form' => $form);
     }
 }
