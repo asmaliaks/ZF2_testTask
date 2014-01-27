@@ -1,6 +1,6 @@
 <?php
 
-namespace Blog\Form\Filters;
+namespace Blog\Forms\Filters;
 
 use Zend\InputFilter\Factory as InputFactory;
 use Zend\InputFilter\InputFilter;
@@ -71,10 +71,10 @@ class LoginFilter implements InputFilterAwareInterface {
                         ),
             )));
 
-            $inputFilter->add($factory->createInput(array(
-                        'name' => 'remember',
-                        'required' => false,
-            )));
+//            $inputFilter->add($factory->createInput(array(
+//                        'name' => 'remember',
+//                        'required' => false,
+//            )));
 
             $this->inputFilter = $inputFilter;
         }

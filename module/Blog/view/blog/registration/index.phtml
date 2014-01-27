@@ -17,38 +17,61 @@
     <div class="row">
      <?
       $form = $this->form;
-      $form->setAttribute('action', $this->url('index'));
       $form->prepare();
-      echo '<div class="row">';
-      echo $this->form()->openTag($form);
-      echo '<div class="row"><div class="col-lg-3">';
-      echo $this->formInput($form->get('name'));
-      echo '</div></div></br>';
-      echo '<div class="row"><div class="col-lg-3">';
-      echo $this->formInput($form->get('surname'));
-      echo '</div></div></br>';
-      echo '<div class="row"><div class="col-lg-3">';
-      echo $this->formInput($form->get('login'));
-      echo '</div></div></br>';
-      echo '<div class="row"><div class="col-lg-3">';
-      echo $this->formInput($form->get('pass'));
-      echo '</div></div></br>';
-      echo '<div class="row"><div class="col-lg-3">';
-      echo $this->formInput($form->get('pass_re_enter'));
-      echo '</div></div></br>';
-      echo '<div class="row"><div class="col-lg-3">';
-      echo $this->formCaptcha($form->get('captcha'));
-      echo '</div></div></br>';
-      echo '<div class="row"><div class="col-lg-3">';
-      echo $this->formInput($form->get('submit'));
-      echo '</div></div></br>';
-      echo $this->form()->closeTag($form);
-      echo '</div>';
+      $form->setAttribute('action', $this->url('registration'));
+      ?>
+      <div class="row">
+      <?= $this->form()->openTag($form); ?>
+      <div class="row"><div class="col-lg-3">
+      <?
+      $name = $form->get('full_name');
+      echo $this->formInput($name);
+      echo $this->formElementErrors($name);
+      ?>
+      </div></div></br>
+      <div class="row"><div class="col-lg-3">
+      <? 
+      $surname = $form->get('surname');
+      echo $this->formInput($surname);
+      echo $this->formElementErrors($surname);
+      ?>
+      </div></div></br>
+      <div class="row"><div class="col-lg-3">
+      <? 
+      $login = $form->get('login');
+      echo $this->formInput($login);
+      echo $this->formElementErrors($login);
+      ?>
+      </div></div></br>
+      <div class="row"><div class="col-lg-3">
+      <?
+      $pass = $form->get('pass');
+      echo $this->formInput($pass); 
+      echo $this->formElementErrors($pass);
+      ?>
+      </div></div></br>
+      <div class="row"><div class="col-lg-3">
+      <?
+      $passReenter = $form->get('pass_re_enter');
+      echo $this->formInput($passReenter); 
+      echo $this->formElementErrors($passReenter);
+      ?>
+      </div></div></br>
+      <div class="row"><div class="col-lg-3">
+      <?
+      $captcha = $form->get('captcha');
+      echo $this->formCaptcha($captcha);
+      echo $this->formElementErrors($captcha);
+      ?>
+      </div></div></br>
+      <div class="row"><div class="col-lg-3">
+      <?= $this->formInput($form->get('submit')); ?>
+      </div></div></br>
+      <? $this->form()->closeTag($form); ?>
+      </div>
 
-//      echo $this->form()->openTag($form);
-//      echo $this->formCollection($form);
-//      echo $this->form()->closeTag($form);
+
       
-     ?>
+
     </div>
 </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Blog\Form;
+namespace Blog\Forms;
 
 use Zend\Form\Form;
 use Zend\Form\Element;
@@ -14,7 +14,7 @@ class RegistrationForm extends Form {
         /*form elements*/
         
         $this->add(array(
-            'name'    => 'name',
+            'name'    => 'full_name',
             'type'    => 'Zend\Form\Element\Text',
             'options' => array(
                 'label' => 'Full Name'
@@ -30,7 +30,7 @@ class RegistrationForm extends Form {
             'name' => 'surname',
             'type'    => 'Zend\Form\Element\Text',
             'options' => array(
-                'label' => 'Full Name'
+                'label' => 'surname'
             ),
             'attributes' => array(
                 'id'          => 'surname',

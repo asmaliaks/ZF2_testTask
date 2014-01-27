@@ -1,0 +1,79 @@
+<!-- Login form block -->
+<div class="page-login">
+    <?php if ($this->errorMessage) { ?>
+        <div class="loginError">
+            <?= WRONG_LOGIN_PASS_TKN  ?>
+        </div>
+    <?php } ?>
+    <?php
+    /* within a view script */
+    $form = $this->registerForm;
+    $form->prepare();
+
+    /* Assuming the "contact/process" route exists... */
+    $form->setAttribute('action', "");
+
+    /*  Set the method attribute for the form */
+    $form->setAttribute('method', 'post');
+
+    /*  Get the form label plugin */
+    $formLabel = $this->plugin('formLabel');
+
+    /* Render the opening tag */
+    echo $this->form()->openTag($form);
+    ?>
+
+    <label><?= LOGIN_TKN ?></label>
+
+    <div class="form_element">
+        <?php
+        $login = $form->get('login');
+        echo $this->formInput($login);
+        echo $this->errorFilter->swapError($this->formElementErrors($login));
+        ?>
+    </div>
+
+    <label><?= PASSWORD_TKN ?></label>
+
+    <div class="form_element">
+        <?php
+        $pass = $form->get('pass');
+        echo $this->formInput($pass);
+        echo $this->errorFilter->swapError($this->formElementErrors($pass));
+        ?>
+    </div>
+
+    <?php if (count($form->getElements()) > 4) { ?>
+        <label><?= CAPTCHA_TKN ?></label>
+        <div class="form_element">
+            <table>
+                <tr>
+                    <td>
+                        <?php
+                        $captcha = $form->get('loginCaptcha');
+                        echo $this->formCaptcha($captcha);
+                        echo $this->errorFilter->swapError($this->formElementErrors($captcha));
+                        ?>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    <?php } ?>
+
+    <label><?= REMEMBER_ME_TKN ?></label>
+
+    <div class="form_element">
+        <?php
+        $remember = $form->get('remember');
+        echo $this->formInput($remember);
+        echo $this->formElementErrors($remember);
+        ?>
+    </div>
+
+    <?php echo $this->formElement($form->get('send')) ?>
+
+    <?php echo $this->form()->closeTag() ?>
+
+    <a href="/auth/remind/" class="remind"><?= REMIND_PASSWORD_TKN ?></a>
+    <a href="/auth/reg/" class="create-store"><?= REGISTER_TKN ?></a>
+</div>

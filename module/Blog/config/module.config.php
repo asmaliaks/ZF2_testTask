@@ -50,6 +50,16 @@ return array(
                     ),
                 ),
             ),
+            'index' => array(
+                'type'    => 'Segment',
+                'options' => array(
+                  'route'    => '/index/index',
+                  'defaults' => array(
+                      'controller' => 'Blog\Controller\Index',
+                      'action'     => 'index'
+                  ),  
+                ),
+            ),
             'blogPost' => array(
                 'type'     => 'Segment',
                  'options' => array(
@@ -61,7 +71,7 @@ return array(
                      )
                  )
             ),
-            'index' => array(
+            'auth' => array(
                 'type'    => 'Segment',
                 'options' => array(
                     'route'    => '/auth/index',
@@ -106,8 +116,9 @@ return array(
         'invokables' => array(
             'Blog\Controller\Index' => 'Blog\Controller\IndexController',
             'Blog\Controller\Post'  => 'Blog\Controller\PostController',
-            'Blog\Controller\Auth'  => 'Blog\Controller\AuthController',
-            'Blog\Controller\Registration' => 'Blog\Controller\RegistrationController'
+            'Blog\Controller\Registration' => 'Blog\Controller\RegistrationController',
+            'Blog\Controller\Auth'  => 'Blog\Controller\AuthController'
+            
         ),
     ),
     'view_manager' => array(

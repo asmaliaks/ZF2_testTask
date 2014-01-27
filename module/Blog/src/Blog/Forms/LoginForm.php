@@ -1,6 +1,6 @@
 <?php
 
-namespace Blog\Form;
+namespace Blog\Forms;
 
 use Zend\Form\Form;
 use Zend\Form\Element;
@@ -27,7 +27,7 @@ class LoginForm extends Form {
             )
         ));
         $this->add(array(
-            'name'    => 'password',
+            'name'    => 'pass',
             'type'    => 'Zend\Form\Element\Password',
             'options' => array(
                 'label' => 'Password'

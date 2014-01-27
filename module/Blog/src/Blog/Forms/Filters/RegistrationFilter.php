@@ -1,6 +1,6 @@
 <?php
 
-namespace Blog\Form;
+namespace Blog\Forms\Filters;
 
 use Zend\InputFilter\Factory as InputFactory;
 use Zend\InputFilter\InputFilter;
@@ -40,7 +40,7 @@ class RegistrationFilter implements InputFilterAwareInterface {
             $factory = new InputFactory();
             
             $inputFilter->add($factory->createInput(array(
-                'name' => 'name',
+                'name' => 'full_name',
                 'required' => true,
                 'filters' => array(
                     array('name' => 'StripTags'),
@@ -95,6 +95,24 @@ class RegistrationFilter implements InputFilterAwareInterface {
             )));
             $inputFilter->add($factory->createInput(array(
                 'name' => 'pass',
+                'required' => true,
+                'filters' => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name' => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min' => 3,
+                            'max' => 255,
+                        ),
+                    ),
+                ),
+            )));
+            $inputFilter->add($factory->createInput(array(
+                'name' => 'pass_re_enter',
                 'required' => true,
                 'filters' => array(
                     array('name' => 'StripTags'),
