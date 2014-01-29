@@ -42,7 +42,10 @@ class PostController extends AbstractActionController
     }
     
     public function editPostAction(){
-        
+        $form = new PostForm();
+        return new ViewModel(array(
+            'form' => $form
+        ));
     }
     
     public function removePostAction(){

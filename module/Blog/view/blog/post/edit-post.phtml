@@ -1,0 +1,43 @@
+<title>Правка статьи</title>
+<hr>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="well text-center">
+                    <h1>Правка статьи</h1>
+                </div>
+            </div>
+        </div>
+<div class="container ">
+ <?php
+      $form = $this->form;
+      $form->prepare();
+    //  $form->setAttribute('action', $this->url('blogPost'));
+      ?>
+    <?php $this->form()->openTag($form)?>
+    <div class="row">
+        <div class="col-lg-3">
+            <?php
+            $title = $form->get('title');
+            echo $this->formInput($title);
+            ?>
+        </div>
+    </div></br>
+    <div class="row">
+        <div class="col-lg-3">
+            <?php
+             $body = $form->get('body');
+             echo $this->formTextarea($body);
+            ?>
+        </div>
+    </div></br>
+    <div class="row">
+        <div class="col-lg-3">
+            <?php
+             $submit = $form->get('submit');
+             echo $this->formSubmit($submit);
+            ?>
+        </div>
+    </div></br>
+    <?php $this->form()->closeTag($form)?>
+    
+</div>

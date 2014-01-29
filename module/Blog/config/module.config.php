@@ -80,6 +80,15 @@ return array(
                                 'action' => 'add-post'
                             )
                         )
+                    ),
+                    'edit-post' => array(
+                        'type' => 'literal',
+                        'options' => array(
+                            'route' => '/edit-post',
+                            'defaults' => array(
+                                'action' => 'edit-post',
+                            )
+                        )
                     )
                 )
             ),

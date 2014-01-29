@@ -16,13 +16,11 @@ $title = 'Статьи';
  </tr>
  <?php foreach ($posts as $post) : ?>
  <tr>
-     <td><?= $post->title //echo $this->escapeHtml($post->title);?></td>
-     <td><?php //echo $this->escapeHtml($post->author_id);?></td>
+     <td><?= $post->title; echo $this->escapeHtml($post->title);?></td>
+     <td><?php echo $this->escapeHtml($post->author_id);?></td>
      <td>
-         <a href="<?//php echo $this->url('blogPost',
-            // array('action'=>'edit', 'id' => $post->id));?>">Edit</a>
-         <a href="<?//php echo $this->url('blogPost',
-             //array('action'=>'delete', 'id' => $post->id));?>">Delete</a>
+         <a href="<?= $this->url('blogPost');?>/edit-post?id=<?= $post->id;?>">Edit</a>
+         <a href="<?php echo $this->url('blogPost')?>/remove-post?id=<?= $post->id?>">Delete</a>
      </td>
  </tr>
  <?php endforeach; ?>
