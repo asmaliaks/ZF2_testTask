@@ -84,10 +84,34 @@ return array(
             'registration' => array(
                 'type'     => 'Segment',
                 'options'  => array(
-                    'route'    => '/registration/index',
+                    'route'    => '/registration',
                     'defaults' => array(
                         'controller' => 'Blog\Controller\Registration',
                         'action'     => 'index'
+                    )
+                ),
+                'may_terminate' => true,
+                'child_routes'  => array(
+                        'register-new-user' => array(
+                        'type'              => 'segment',
+                        'options'           => array(
+                                    'route'      => '/[:slug]',
+                                    'constraints' => array(
+                                              'slug' => '[a-zA-Z0-9_-]+'
+                            ),
+                            'defaults' => array(
+                                'action' => 'register-new-user'
+                            )
+                         )
+                    ),
+                    'user-list' => array(
+                        'type'    => 'literal',
+                        'options' => array(
+                            'route'       => '/user-list',
+                            'defaults' => array(
+                                'action' => 'user-list'
+                            )
+                        )
                     )
                 )
             )

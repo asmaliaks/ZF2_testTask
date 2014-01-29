@@ -9,6 +9,10 @@
 
 namespace Blog;
 
+use Blog\Models\Users\Users;
+use Blog\Models\Users\UsersTable;
+ use Zend\Db\ResultSet\ResultSet;
+ use Zend\Db\TableGateway\TableGateway;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
@@ -36,4 +40,22 @@ class Module
             ),
         );
     }
+    
+         public function getServiceConfig(){
+         return array(
+             'factories' => array(
+                 'Blog\Modes\Users\UsersTable' =>  function($sm) {
+                     $tableGateway = $sm->get('BlogTableGateway');
+                     $table = new UsersTable($tableGateway);
+                     return $table;
+                 },
+                 'BlogTableGateway' => function ($sm) {
+                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                     $resultSetPrototype = new ResultSet();
+                     $resultSetPrototype->setArrayObjectPrototype(new Users());
+                     return new TableGateway('users', $dbAdapter, null, $resultSetPrototype);
+                 },
+             ),
+         );
+     }
 }
