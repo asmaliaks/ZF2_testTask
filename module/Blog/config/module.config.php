@@ -63,13 +63,25 @@ return array(
             'blogPost' => array(
                 'type'     => 'Segment',
                  'options' => array(
-                     'route'    => '/post/view[/:postId]',
+                     'route'    => '/post',
                      'defaults' => array(
                          'controller' => 'Blog\Controller\Post',
-                         'action'     => 'view',
-                         'postId'     => 1
+                         'action'     => 'list',
+                         
                      )
-                 )
+                 ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'add-post' => array(
+                        'type' => 'literal',
+                        'options' => array(
+                            'route'      => '/add-post',
+                            'defaults' => array(
+                                'action' => 'add-post'
+                            )
+                        )
+                    )
+                )
             ),
             'auth' => array(
                 'type'    => 'Segment',

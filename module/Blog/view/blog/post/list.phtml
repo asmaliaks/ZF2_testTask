@@ -1,0 +1,29 @@
+<title>Статьи</title>
+<?php 
+$title = 'Статьи';
+ $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+ <p>
+     <a href="<?= $this->url('blogPost') ?>/add-post">Добавить статью</a>
+ </p>
+
+ <table class="table">
+ <tr>
+     <th>Title</th>
+     <th>Author</th>
+     <th>&nbsp;</th>
+ </tr>
+ <?php foreach ($posts as $post) : ?>
+ <tr>
+     <td><?= $post->title //echo $this->escapeHtml($post->title);?></td>
+     <td><?php //echo $this->escapeHtml($post->author_id);?></td>
+     <td>
+         <a href="<?//php echo $this->url('blogPost',
+            // array('action'=>'edit', 'id' => $post->id));?>">Edit</a>
+         <a href="<?//php echo $this->url('blogPost',
+             //array('action'=>'delete', 'id' => $post->id));?>">Delete</a>
+     </td>
+ </tr>
+ <?php endforeach; ?>
+ </table>

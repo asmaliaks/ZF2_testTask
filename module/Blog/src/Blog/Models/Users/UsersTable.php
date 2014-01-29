@@ -53,7 +53,7 @@ class UsersTable {
          }
      }
 
-     public function deleteAlbum($id)
+     public function deleteUser($id)
      {
          $this->tableGateway->delete(array('id' => (int) $id));
      }

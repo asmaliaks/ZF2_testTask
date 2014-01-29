@@ -54,7 +54,7 @@ class LoginForm extends Form {
         $send = new Element('send');
         $send->setValue(SUBMIT_TKN);
         $send->setAttributes(array(
-            'type' => 'submit'
+            'type' => 'submit',
         ));
 
         //$this->add($captcha);
