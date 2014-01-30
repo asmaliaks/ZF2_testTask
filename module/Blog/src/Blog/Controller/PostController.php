@@ -7,6 +7,7 @@
 namespace Blog\Controller;
 use Blog\Forms\PostForm;
 use Blog\Forms\Filters\PostFilter;
+use Blog\Models\Posts\Posts;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
@@ -44,11 +45,15 @@ class PostController extends AbstractActionController
         $form = new PostForm();
         $request = $this->getRequest();
         if($request->isPost()){
+            $newPost = new Posts();
+            $regFilter = new PostFilter();        
+            $form->setInputFilter($regFilter->getInputFilter());  
             $form->setData($request->getPost());
-            $regFilter = new PostFilter();
-            $form->setInputFilter($regFilter->getInputFilter());         
             if($form->isValid()){
+                $newPost->exchangeArray($form->getData());
+                $this->getPostsTable()->addPost($newPost);
                 
+                return $this->redirect()->toRoute('blogPost/add-post');
             }else{
                     
             }

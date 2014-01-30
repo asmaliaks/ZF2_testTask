@@ -16,7 +16,7 @@
       ?>
     <?php echo $this->form()->openTag($form)?>
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-6">
             <?php
             $title = $form->get('title');
             echo $this->formInput($title);
@@ -25,7 +25,7 @@
         </div>
     </div></br>
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-6">
             <?php
              $body = $form->get('body');
              echo $this->formTextarea($body);

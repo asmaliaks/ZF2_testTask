@@ -85,7 +85,7 @@ class RegistrationForm extends Form {
             'lineNoiseLevel' => 30)
         );
         $captcha->setImgDir('/var/www/zf2/public/captcha/images');
-        $captcha->setFontSize(45);
+        $captcha->setFontSize(30);
         $captcha->setUseNumbers(true);
         $captcha->setImgUrl('/captcha/images');
 

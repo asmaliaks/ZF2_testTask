@@ -34,18 +34,18 @@ class UsersTable {
      public function addUser(Users $user)
      {
          $data = array(
-             'username' => $album->username,
-             'surname'  => $album->surname,
-             'role'     => $album->role,
-             'email'    => $album->email,
-             'pass'     => $album->pass
+             'username' => $user->username,
+             'surname'  => $user->surname,
+             'role'     => $user->role,
+             'email'    => $user->email,
+             'pass'     => $user->pass,
          );
 
          $id = (int) $user->id;
          if ($id == 0) {
              $this->tableGateway->insert($data);
          } else {
-             if ($this->getAlbum($id)) {
+             if ($this->getuserById($id)) {
                  $this->tableGateway->update($data, array('id' => $id));
              } else {
                  throw new \Exception('User doesn\'t exist');

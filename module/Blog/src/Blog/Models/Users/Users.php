@@ -3,7 +3,7 @@ namespace Blog\Models\Users;
 
 class Users {
     
-    public $id;
+    
     public $username;
     public $surname;
     public $email;
@@ -11,10 +11,10 @@ class Users {
     public $role;
     
     public function exchangeArray($data){
-        $this->id = (isset($data['id'])) ? $data['id'] : null;
-        $this->username = (isset($data['username'])) ? $data['username'] : null;
+       
+        $this->username = (isset($data['full_name'])) ? $data['full_name'] : null;
         $this->surname = (isset($data['surname'])) ? $data['surname'] : null;
-        $this->email = (isset($data['email'])) ? $data['email'] : null;
+        $this->email = (isset($data['login'])) ? $data['login'] : null;
         $this->pass = (isset($data['pass'])) ? $data['pass'] : null;
         $this->role = (isset($data['role'])) ? $data['role'] : null;
     }

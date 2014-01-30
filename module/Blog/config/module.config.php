@@ -125,12 +125,9 @@ return array(
                 'may_terminate' => true,
                 'child_routes'  => array(
                         'register-new-user' => array(
-                        'type'              => 'segment',
+                        'type'              => 'literal',
                         'options'           => array(
-                                    'route'      => '/[:slug]',
-                                    'constraints' => array(
-                                              'slug' => '[a-zA-Z0-9_-]+'
-                            ),
+                                    'route'      => '/register-new-user',
                             'defaults' => array(
                                 'action' => 'register-new-user'
                             )

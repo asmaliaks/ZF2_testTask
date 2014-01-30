@@ -20,7 +20,7 @@ class PostsTable {
         $data = array(
              'title'     => $post->title,
              'text'      => $post->text,
-             'author_id' => $post->author_id,
+             'author_id' => '$post->author_id',
              'date'      => $post->date
          );
 

@@ -6,6 +6,8 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Blog\Forms\RegistrationForm;
 use Blog\Forms\Filters\RegistrationFilter;
+use Blog\Models\Users\Users;
+use Blog\Models\Users\UsersTable;
 
 class RegistrationController extends AbstractActionController {
     
@@ -15,12 +17,18 @@ class RegistrationController extends AbstractActionController {
         $form = new RegistrationForm();
         $request = $this->getRequest();
         if($request->isPost()){
-            $form->setData($request->getPost());
+            $newUser = new Users();
+          
             $regFilter = new RegistrationFilter();
             $form->setInputFilter($regFilter->getInputFilter());
-            
+            $form->setData($request->getPost());
             if($form->isValid()){
+                $newUserData = $form->getData();
+                $newUserData['role'] = 0;
+                $newUser->exchangeArray($newUserData);
+                $this->getUsersTable()->addUser($newUser);
                 
+                return $this->redirect()->toRoute('index');
             }else{
                 
             }
@@ -33,7 +41,7 @@ class RegistrationController extends AbstractActionController {
     }
     
     public function registerNewUserAction(){
-        echo print_r($_POST);
+
     }
     public function editUserDataAction(){
         

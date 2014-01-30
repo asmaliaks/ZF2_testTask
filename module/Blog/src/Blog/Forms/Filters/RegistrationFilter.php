@@ -19,7 +19,7 @@ class RegistrationFilter implements InputFilterAwareInterface {
         
     }
     
-    public function exchangeArrat($data){
+    public function exchangeArray($data){
         $this->fullName = (isset($data['name'])) ? $data['name'] : null;
         $this->surname = (isset($data['surname'])) ? $data['surname'] : null;
         $this->email = (isset($data['login'])) ? $data['login'] : null;
