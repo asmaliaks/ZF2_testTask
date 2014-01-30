@@ -35,7 +35,6 @@ class RegistrationController extends AbstractActionController {
     public function registerNewUserAction(){
         echo print_r($_POST);
     }
-    
     public function editUserDataAction(){
         
     }

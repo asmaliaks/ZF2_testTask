@@ -6,6 +6,7 @@
 
 namespace Blog\Controller;
 use Blog\Forms\PostForm;
+use Blog\Forms\Filters\PostFilter;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
@@ -19,6 +20,11 @@ class PostController extends AbstractActionController
             'posts' => $this->getPostsTable()->fetchAll(),
         ));
     }
+    
+    public function viewPostAction(){
+        
+    }
+    
     public function viewAction()
     {
      //   $postId = $this->getEvent()->getRouteMatch()->getParam('postId');
@@ -36,6 +42,17 @@ class PostController extends AbstractActionController
     
     public function addPostAction(){
         $form = new PostForm();
+        $request = $this->getRequest();
+        if($request->isPost()){
+            $form->setData($request->getPost());
+            $regFilter = new PostFilter();
+            $form->setInputFilter($regFilter->getInputFilter());         
+            if($form->isValid()){
+                
+            }else{
+                    
+            }
+        }
         return new ViewModel(array(
             'form' => $form
         ));

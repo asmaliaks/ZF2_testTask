@@ -16,7 +16,7 @@ $title = 'Статьи';
  </tr>
  <?php foreach ($posts as $post) : ?>
  <tr>
-     <td><?= $post->title; echo $this->escapeHtml($post->title);?></td>
+     <td><a href="<?= $this->url('blogPost') ?>/view-post/<?= $post->id ?>"><?= $post->title; echo $this->escapeHtml($post->title);?></a></td>
      <td><?php echo $this->escapeHtml($post->author_id);?></td>
      <td>
          <a href="<?= $this->url('blogPost');?>/edit-post?id=<?= $post->id;?>">Edit</a>

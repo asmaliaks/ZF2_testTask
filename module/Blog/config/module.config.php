@@ -89,6 +89,17 @@ return array(
                                 'action' => 'edit-post',
                             )
                         )
+                    ),
+                    'view-post' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route' => '/view-post[/:postId]',
+                            'defaults' => array(
+                                'controller' => 'Blog\Controller\Post',
+                                'action'     => 'view-post',
+                                'postId'     => 1
+                            )
+                        )
                     )
                 )
             ),
