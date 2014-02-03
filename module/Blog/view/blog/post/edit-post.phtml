@@ -11,9 +11,14 @@
  <?php
       $form = $this->form;
       $form->prepare();
-    //  $form->setAttribute('action', $this->url('blogPost'));
+      $form->setAttribute('action', 'edit-post');
+      $form->setAttribute('method', 'post');
       ?>
-    <?php $this->form()->openTag($form)?>
+    <?= $this->form()->openTag($form)?>
+    <?php
+      $id = $form->get('id');
+      echo $this->formHidden($id);
+    ?>
     <div class="row">
         <div class="col-lg-3">
             <?php
@@ -25,7 +30,7 @@
     <div class="row">
         <div class="col-lg-3">
             <?php
-             $body = $form->get('body');
+             $body = $form->get('text');
              echo $this->formTextarea($body);
             ?>
         </div>
@@ -38,6 +43,6 @@
             ?>
         </div>
     </div></br>
-    <?php $this->form()->closeTag($form)?>
+    <?= $this->form()->closeTag($form)?>
     
 </div>

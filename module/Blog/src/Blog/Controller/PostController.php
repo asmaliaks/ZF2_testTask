@@ -65,10 +65,32 @@ class PostController extends AbstractActionController
     }
     
     public function editPostAction(){
-        $form = new PostForm();
-        return new ViewModel(array(
-            'form' => $form
-        ));
+         $id = (int) $this->getEvent()->getRouteMatch()->getParam('postId');
+         if(!$id){
+            $id = (int) $this->getRequest()->getPost('id');
+         }   
+         $post = $this->getPostsTable()->getPostById($id);
+         $form = new PostForm();
+         $form->bind($post);
+         $form->get('submit')->setAttribute('value', 'Редактировать');
+         
+         $request = $this->getRequest();
+
+         if($request->isPost()){
+             $regFilter = new PostFilter();
+             $form->setInputFilter($regFilter->getInputFilter());
+             $form->setData($request->getPost());
+             if($form->isValid()){
+                 $this->getPostsTable()->addPost($post);
+                 
+                 return $this->redirect()->toRoute('blogPost');
+             }
+         }
+         
+         return array(
+             'id' => $id,
+             'form' => $form,
+         );
     }
     
     public function removePostAction(){

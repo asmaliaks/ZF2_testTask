@@ -82,11 +82,12 @@ return array(
                         )
                     ),
                     'edit-post' => array(
-                        'type' => 'literal',
+                        'type' => 'segment',
                         'options' => array(
-                            'route' => '/edit-post',
+                            'route' => '/edit-post[/:postId]',
                             'defaults' => array(
-                                'action' => 'edit-post',
+                                'controller' => 'Blog\Controller\Post',
+                                'action'     => 'edit-post'
                             )
                         )
                     ),

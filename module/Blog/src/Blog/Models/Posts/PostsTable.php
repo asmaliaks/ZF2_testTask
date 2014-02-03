@@ -28,7 +28,7 @@ class PostsTable {
          if ($id == 0) {
              $this->tableGateway->insert($data);
          } else {
-             if ($this->getAlbum($id)) {
+             if ($this->getPostById($id)) {
                  $this->tableGateway->update($data, array('id' => $id));
              } else {
                  throw new \Exception('User doesn\'t exist');
@@ -37,7 +37,7 @@ class PostsTable {
     }
     
     public function getPostById($id){
-         $id  = (int) $id;
+         
          $rowset = $this->tableGateway->select(array('id' => $id));
          $row = $rowset->current();
          if (!$row) {

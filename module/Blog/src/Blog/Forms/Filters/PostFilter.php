@@ -9,7 +9,7 @@ use Zend\InputFilter\InputFilterInterface;
 class PostFilter implements InputFilterAwareInterface {
     
     public $title;
-    public $body;
+    public $text;
     protected $inputFilter;
     
     public function __construct(){
@@ -18,7 +18,7 @@ class PostFilter implements InputFilterAwareInterface {
     
     public function exchangeArray($data) {
         $this->title = (isset($data['title'])) ? $data['title'] : null;
-        $this->body = (isset($data['body'])) ? $data['body'] : null;
+        $this->text = (isset($data['text'])) ? $data['text'] : null;
     }
     
     public function getArrayCopy() {
@@ -54,7 +54,7 @@ class PostFilter implements InputFilterAwareInterface {
             )));
 
             $inputFilter->add($factory->createInput(array(
-                        'name' => 'body',
+                        'name' => 'text',
                         'required' => true,
                         'filters' => array(
                             array('name' => 'StripTags'),
