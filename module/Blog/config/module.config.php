@@ -98,7 +98,6 @@ return array(
                             'defaults' => array(
                                 'controller' => 'Blog\Controller\Post',
                                 'action'     => 'view-post',
-                                'postId'     => 1
                             )
                         )
                     ),

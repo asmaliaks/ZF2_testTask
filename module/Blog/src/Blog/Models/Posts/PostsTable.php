@@ -37,7 +37,7 @@ class PostsTable {
     }
     
     public function getPostById($id){
-         
+         $id = (int) $id;
          $rowset = $this->tableGateway->select(array('id' => $id));
          $row = $rowset->current();
          if (!$row) {

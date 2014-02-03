@@ -25,6 +25,13 @@ class PostController extends AbstractActionController
     
     public function viewPostAction(){
         
+        $id = (int) $this->getEvent()->getRouteMatch()->getParam('postId');
+        $post = $this->getPostsTable()->getPostById($id);
+        $viewObj = new ViewModel(array(
+            'post' => $post
+            
+        )); 
+        return $viewObj;
     }
     
     public function viewAction()
@@ -43,6 +50,7 @@ class PostController extends AbstractActionController
     }
     
     public function addPostAction(){
+      
         $form = new PostForm();
         $request = $this->getRequest();
         if($request->isPost()){
@@ -67,7 +75,7 @@ class PostController extends AbstractActionController
     public function editPostAction(){
          $id = (int) $this->getEvent()->getRouteMatch()->getParam('postId');
          if(!$id){
-            $id = (int) $this->getRequest()->getPost('id');
+            $id = $this->getRequest()->getPost('id');
          }   
          $post = $this->getPostsTable()->getPostById($id);
          $form = new PostForm();
