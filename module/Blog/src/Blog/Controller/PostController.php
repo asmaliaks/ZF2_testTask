@@ -8,6 +8,7 @@ namespace Blog\Controller;
 use Blog\Forms\PostForm;
 use Blog\Forms\Filters\PostFilter;
 use Blog\Models\Posts\Posts;
+use Blog\Models\Posts\PostsTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
@@ -71,7 +72,9 @@ class PostController extends AbstractActionController
     }
     
     public function removePostAction(){
-        
+        $id = (int) $this->params()->fromRoute('id', $_GET['id']);
+        $this->getPostsTable()->deletePost($id);
+        $this->redirect()->toRoute('blogPost');
     }
     
     private function getPostsTable(){

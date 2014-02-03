@@ -100,6 +100,17 @@ return array(
                                 'postId'     => 1
                             )
                         )
+                    ),
+                    'remove-post' => array(
+                        'type'    => 'segment',
+                        'options' => array(
+                            'route'    => '/remove-post[/:postId]',
+                            'defaults' => array(
+                                'controller' => 'Blog\Controller\Post',
+                                'action'     => 'remove-post',
+                                'postId'     => 1
+                            )
+                        )
                     )
                 )
             ),
