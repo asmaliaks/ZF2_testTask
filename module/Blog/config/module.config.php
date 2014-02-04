@@ -1,5 +1,4 @@
-<?php
-/**
+<?php /**
  * Zend Framework (http://framework.zend.com/)
  *
  * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
@@ -114,16 +113,16 @@ return array(
                     )
                 )
             ),
-            'auth' => array(
-                'type'    => 'Segment',
-                'options' => array(
-                    'route'    => '/auth/index',
-                    'defaults' => array(
-                        'controller' => 'Blog\Controller\Auth',
-                        'action'     => 'index'
-                    )
-                )
-            ),
+//            'auth' => array(
+//                'type'    => 'Segment',
+//                'options' => array(
+//                    'route'    => '/auth/index',
+//                    'defaults' => array(
+//                        'controller' => 'Blog\Controller\Auth',
+//                        'action'     => 'index'
+//                    )
+//                )
+//            ),
             'registration' => array(
                 'type'     => 'Segment',
                 'options'  => array(
@@ -181,7 +180,7 @@ return array(
             'Blog\Controller\Index' => 'Blog\Controller\IndexController',
             'Blog\Controller\Post'  => 'Blog\Controller\PostController',
             'Blog\Controller\Registration' => 'Blog\Controller\RegistrationController',
-            'Blog\Controller\Auth'  => 'Blog\Controller\AuthController'
+            //'Blog\Controller\Auth'  => 'Blog\Controller\AuthController'
             
         ),
     ),
