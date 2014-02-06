@@ -20,6 +20,16 @@ use Zend\Authentication\Adapter\DbTable as AuthAdapter;
 class IndexController extends AbstractActionController
 {
 
+    public function simauthAction(){
+        
+        $auth = new AuthenticationService();
+        //echo '<h1> hasIdentity = '. print_r($auth->hasIdentity()).'</h1>';
+        if(!$auth->hasIdentity()){
+           $this->redirect()->toRoute('blogPost');
+        }   
+
+        
+    }
     public function loginAction() {
         $auth = new AuthenticationService();
         if($auth->hasIdentity()){

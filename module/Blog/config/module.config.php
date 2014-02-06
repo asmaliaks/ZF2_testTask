@@ -179,8 +179,7 @@ return array(
         'invokables' => array(
             'Blog\Controller\Index' => 'Blog\Controller\IndexController',
             'Blog\Controller\Post'  => 'Blog\Controller\PostController',
-            'Blog\Controller\Registration' => 'Blog\Controller\RegistrationController',
-            //'Blog\Controller\Auth'  => 'Blog\Controller\AuthController'
+            'Blog\Controller\Registration' => 'Blog\Controller\RegistrationController'
             
         ),
     ),
