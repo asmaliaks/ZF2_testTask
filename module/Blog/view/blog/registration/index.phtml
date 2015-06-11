@@ -7,7 +7,7 @@
                 <div class="well">
                     <div class="row">
                     <div class="col-lg-8">
-                        <p>Оу вачигос! Тумороу  оу вачигосб бэбэ еээ!</p>
+                        <p>Заполните поля для регистрации</p>
                     </div>
                     </div>    
                 </div>
@@ -15,7 +15,7 @@
         </div>
 <div class="container">
     <div class="row">
-     <?
+     <?php
       $form = $this->form;
       $form->prepare();
       $form->setAttribute('action', $this->url('registration'));
@@ -23,42 +23,42 @@
       <div class="row">
       <?= $this->form()->openTag($form); ?>
       <div class="row"><div class="col-lg-3">
-      <?
+      <?php
       $name = $form->get('full_name');
       echo $this->formInput($name);
       echo $this->formElementErrors($name);
       ?>
       </div></div></br>
       <div class="row"><div class="col-lg-3">
-      <? 
+      <?php 
       $surname = $form->get('surname');
       echo $this->formInput($surname);
       echo $this->formElementErrors($surname);
       ?>
       </div></div></br>
       <div class="row"><div class="col-lg-3">
-      <? 
+      <?php 
       $login = $form->get('login');
       echo $this->formInput($login);
       echo $this->formElementErrors($login);
       ?>
       </div></div></br>
       <div class="row"><div class="col-lg-3">
-      <?
+      <?php
       $pass = $form->get('pass');
       echo $this->formInput($pass); 
       echo $this->formElementErrors($pass);
       ?>
       </div></div></br>
       <div class="row"><div class="col-lg-3">
-      <?
+      <?php
       $passReenter = $form->get('pass_re_enter');
       echo $this->formInput($passReenter); 
       echo $this->formElementErrors($passReenter);
       ?>
       </div></div></br>
       <div class="row"><div class="col-lg-3">
-      <?
+      <?php
       $captcha = $form->get('captcha');
       echo $this->formCaptcha($captcha);
       echo $this->formElementErrors($captcha);
@@ -67,7 +67,7 @@
       <div class="row"><div class="col-lg-3">
       <?= $this->formInput($form->get('submit')); ?>
       </div></div></br>
-      <? $this->form()->closeTag($form); ?>
+      <?php $this->form()->closeTag($form); ?>
       </div>
 
 

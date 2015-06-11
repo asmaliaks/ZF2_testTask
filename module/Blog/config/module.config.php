@@ -14,8 +14,8 @@ return array(
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
-                        'controller' => 'Blog\Controller\Index',
-                        'action'     => 'index',
+                        'controller' => 'Auth\Controller\Index',
+                        'action'     => 'login',
                     ),
                 ),
             ),
@@ -26,11 +26,11 @@ return array(
             'application' => array(
                 'type'    => 'Literal',
                 'options' => array(
-                    'route'    => '/blog',
+                    'route'    => '/',
                     'defaults' => array(
-                        '__NAMESPACE__' => 'Blog\Controller',
+                        '__NAMESPACE__' => 'Auth\Controller',
                         'controller'    => 'Index',
-                        'action'        => 'index',
+                        'action'        => 'login',
                     ),
                 ),
                 'may_terminate' => true,
@@ -52,77 +52,23 @@ return array(
             'index' => array(
                 'type'    => 'Segment',
                 'options' => array(
-                  'route'    => '/index/index',
+                  'route'    => '/',
                   'defaults' => array(
-                      'controller' => 'Blog\Controller\Index',
-                      'action'     => 'index'
+                      'controller' => 'Auth\Controller\Index',
+                      'action'     => 'login'
                   ),  
                 ),
             ),
-            'blogPost' => array(
-                'type'     => 'Segment',
-                 'options' => array(
-                     'route'    => '/post',
-                     'defaults' => array(
-                         'controller' => 'Blog\Controller\Post',
-                         'action'     => 'list',
-                         
-                     )
-                 ),
-                'may_terminate' => true,
-                'child_routes' => array(
-                    'add-post' => array(
-                        'type' => 'literal',
-                        'options' => array(
-                            'route'      => '/add-post',
-                            'defaults' => array(
-                                'action' => 'add-post'
-                            )
-                        )
-                    ),
-                    'edit-post' => array(
-                        'type' => 'segment',
-                        'options' => array(
-                            'route' => '/edit-post[/:postId]',
-                            'defaults' => array(
-                                'controller' => 'Blog\Controller\Post',
-                                'action'     => 'edit-post'
-                            )
-                        )
-                    ),
-                    'view-post' => array(
-                        'type'    => 'Segment',
-                        'options' => array(
-                            'route' => '/view-post[/:postId]',
-                            'defaults' => array(
-                                'controller' => 'Blog\Controller\Post',
-                                'action'     => 'view-post',
-                            )
-                        )
-                    ),
-                    'remove-post' => array(
-                        'type'    => 'segment',
-                        'options' => array(
-                            'route'    => '/remove-post[/:postId]',
-                            'defaults' => array(
-                                'controller' => 'Blog\Controller\Post',
-                                'action'     => 'remove-post',
-                                'postId'     => 1
-                            )
-                        )
+            'register-success' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/registration/success-page',
+                    'defaults' => array(
+                        'controller' => 'Blog\Controller\Registration',
+                        'action'     => 'success-page'
                     )
                 )
             ),
-//            'auth' => array(
-//                'type'    => 'Segment',
-//                'options' => array(
-//                    'route'    => '/auth/index',
-//                    'defaults' => array(
-//                        'controller' => 'Blog\Controller\Auth',
-//                        'action'     => 'index'
-//                    )
-//                )
-//            ),
             'registration' => array(
                 'type'     => 'Segment',
                 'options'  => array(
@@ -133,26 +79,7 @@ return array(
                     )
                 ),
                 'may_terminate' => true,
-                'child_routes'  => array(
-                        'register-new-user' => array(
-                        'type'              => 'literal',
-                        'options'           => array(
-                                    'route'      => '/register-new-user',
-                            'defaults' => array(
-                                'action' => 'register-new-user'
-                            )
-                         )
-                    ),
-                    'user-list' => array(
-                        'type'    => 'literal',
-                        'options' => array(
-                            'route'       => '/user-list',
-                            'defaults' => array(
-                                'action' => 'user-list'
-                            )
-                        )
-                    )
-                )
+
             )
         ),
     ),

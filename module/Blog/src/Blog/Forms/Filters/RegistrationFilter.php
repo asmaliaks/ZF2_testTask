@@ -20,7 +20,7 @@ class RegistrationFilter implements InputFilterAwareInterface {
     }
     
     public function exchangeArray($data){
-        $this->fullName = (isset($data['name'])) ? $data['name'] : null;
+        $this->fullName = (isset($data['full_name'])) ? $data['full_name'] : null;
         $this->surname = (isset($data['surname'])) ? $data['surname'] : null;
         $this->email = (isset($data['login'])) ? $data['login'] : null;
         $this->password = (isset($data['pass'])) ? $data['pass'] : null;
@@ -48,11 +48,23 @@ class RegistrationFilter implements InputFilterAwareInterface {
                 ),
                 'validators' => array(
                     array(
+                        'name' =>'NotEmpty', 
+                          'options' => array(
+                              'messages' => array(
+                                  \Zend\Validator\NotEmpty::IS_EMPTY => 'Поле не может быть пустым!' 
+                              ),
+                          ),
+                      ),
+                    array(
                         'name' => 'StringLength',
                         'options' => array(
                             'encoding' => 'UTF-8',
                             'min' => 3,
-                            'max' => 255,
+                            'max' => 20,
+                            'messages' => array(
+                                'stringLengthTooShort' => 'Слишком короткий пароль - минимум 3 символа!', 
+                                'stringLengthTooLong' => 'Слишком длинный пароль - максимум 20 символов!' 
+                            ),
                         ),
                     ),
                 ),
@@ -66,11 +78,23 @@ class RegistrationFilter implements InputFilterAwareInterface {
                 ),
                 'validators' => array(
                     array(
+                       'name' =>'NotEmpty', 
+                         'options' => array(
+                             'messages' => array(
+                                 \Zend\Validator\NotEmpty::IS_EMPTY => 'Поле не может быть пустым!' 
+                             ),
+                         ),
+                     ),
+                    array(
                         'name' => 'StringLength',
                         'options' => array(
                             'encoding' => 'UTF-8',
                             'min' => 3,
-                            'max' => 255,
+                            'max' => 20,
+                            'messages' => array(
+                                'stringLengthTooShort' => 'Слишком короткий пароль - минимум 3 символа!', 
+                                'stringLengthTooLong' => 'Слишком длинный пароль - максимум 20 символов!' 
+                            ),
                         ),
                     ),
                 ),
@@ -83,12 +107,33 @@ class RegistrationFilter implements InputFilterAwareInterface {
                     array('name' => 'StringTrim'),
                 ),
                 'validators' => array(
+                    
+                    array (
+                        'name' => 'EmailAddress',
+                        'options' => array(
+                            'messages' => array(
+                                \Zend\Validator\EmailAddress::INVALID_FORMAT => "Некорректный адресс",
+                            )
+                        ),
+                    ),
+                    array(
+                       'name' =>'NotEmpty', 
+                         'options' => array(
+                             'messages' => array(
+                                 \Zend\Validator\NotEmpty::IS_EMPTY => 'Поле не может быть пустым!' 
+                             ),
+                         ),
+                     ),
                     array(
                         'name' => 'StringLength',
                         'options' => array(
                             'encoding' => 'UTF-8',
                             'min' => 3,
                             'max' => 255,
+                            'messages' => array(
+                                'stringLengthTooShort' => 'Слишком короткий пароль - минимум 3 символа!', 
+                                'stringLengthTooLong' => 'Слишком длинный пароль - максимум 20 символов!' 
+                            ),
                         ),
                     ),
                 ),
@@ -102,33 +147,63 @@ class RegistrationFilter implements InputFilterAwareInterface {
                 ),
                 'validators' => array(
                     array(
+                       'name' =>'NotEmpty', 
+                         'options' => array(
+                             'messages' => array(
+                                 \Zend\Validator\NotEmpty::IS_EMPTY => 'Поле не может быть пустым!' 
+                             ),
+                         ),
+                     ),
+                    array(
                         'name' => 'StringLength',
                         'options' => array(
                             'encoding' => 'UTF-8',
-                            'min' => 3,
-                            'max' => 255,
+                            'min' => 4,
+                            'max' => 20,
+                            'messages' => array(
+                                'stringLengthTooShort' => 'Слишком короткий пароль - минимум 3 символа!', 
+                                'stringLengthTooLong' => 'Слишком длинный пароль - максимум 20 символов!' 
+                            ),
                         ),
                     ),
                 ),
             )));
             $inputFilter->add($factory->createInput(array(
                 'name' => 'pass_re_enter',
-                'required' => true,
-                'filters' => array(
-                    array('name' => 'StripTags'),
-                    array('name' => 'StringTrim'),
-                ),
                 'validators' => array(
                     array(
-                        'name' => 'StringLength',
+                       'name' =>'NotEmpty', 
+                         'options' => array(
+                             'messages' => array(
+                                 \Zend\Validator\NotEmpty::IS_EMPTY => 'Поле не может быть пустым!' 
+                             ),
+                         ),
+                     ),
+                    array(
+                        'name' => 'Identical',
                         'options' => array(
-                            'encoding' => 'UTF-8',
-                            'min' => 3,
-                            'max' => 255,
+                            'token' => 'pass', // name of first password field
+                            'message' => 'пароли не совпадают'
+                            
                         ),
                     ),
                 ),
-            )));
+                )));
+            $inputFilter->add($factory->createInput(array(
+                'name' => 'captcha',
+                'validators' => array(
+                    array(
+                       'name' =>'NotEmpty', 
+                         'options' => array(
+                             'messages' => array(
+                                 \Zend\Validator\NotEmpty::IS_EMPTY => 'Докажите что вы не робот!' 
+                             ),
+                         ),
+                     ),
+                    
+                ),
+                )));
+
             
             $this->inputFilter = $inputFilter;
         }

@@ -46,7 +46,7 @@ class RegistrationForm extends Form {
                 'label' => 'Email',
             ),
             'attributes' => array(
-                'id'          => 'email',
+                'id'          => 'login',
                 'placeholder' => 'Email',
                 'class'       => 'form-control'
             )
@@ -71,20 +71,20 @@ class RegistrationForm extends Form {
                 'label' => 'Password',
             ),
             'attributes' => array(
-                'id'          => 'pass_re',
-                'placeholder' => 'ReEnter your pass',
+                'id'          => 'pass_re_enter',
+                'placeholder' => 'Confirm your password',
                 'class'       => 'form-control',
             )
         ));
          $captcha = new Image(array(
-            'font' => '/var/www/zf2/public/fonts/1.ttf',
+            'font' => $_SERVER['DOCUMENT_ROOT'].'/fonts/1.ttf',
             'width' => 200,
             'height' => 75,
             'wordLen' => 3,
             'dotNoiseLevel' => 80,
             'lineNoiseLevel' => 30)
         );
-        $captcha->setImgDir('/var/www/zf2/public/captcha/images');
+        $captcha->setImgDir($_SERVER['DOCUMENT_ROOT'].'/captcha/images');
         $captcha->setFontSize(30);
         $captcha->setUseNumbers(true);
         $captcha->setImgUrl('/captcha/images');
@@ -92,14 +92,14 @@ class RegistrationForm extends Form {
 
         $captchaElement = new Element\Captcha('captcha');
         $captchaElement->setOptions(array(
-            'label' => 'Please verify you are human',
+            'label' => 'Введите код',
             'captcha' => $captcha,
         ));
         
         $captchaElement->setAttributes(array(
             'id' => 'registrCaptchaElement',
             'class' => 'form-control',
-            'placeholder' => 'Enter the coe here',
+            'placeholder' => 'Enter the code here',
             'style' => 'margin-top: 10px'
         ));
         $this->add($captchaElement);
@@ -110,7 +110,7 @@ class RegistrationForm extends Form {
             'type'    => 'Zend\Form\Element\Submit',
             'attributes' => array(
                 'id' => 'submit',
-                'value' => 'Зарегестрироваться',
+                'value' => 'Register',
                 'class' => 'btn regular-btn'
             )
           ));

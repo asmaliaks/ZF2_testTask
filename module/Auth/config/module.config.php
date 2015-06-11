@@ -12,27 +12,14 @@ return array(
             'home' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
-                    'route'    => '/auth/',
+                    'route'    => '/',
                     'defaults' => array(
                         'controller' => 'Auth\Controller\Index',
                         'action'     => 'login',
                     ),
                 ),
             ),
-            // The following is a route to simplify getting started creating
-            // new controllers and actions without needing to create a new
-            // module. Simply drop new controllers in, and you can access them
-            // using the path /application/:controller/:action
-            'simauth' => array(
-                'type'    => 'Literal',
-                'options' => array(
-                    'route'    => '/auth/simauth/',
-                    'defaults' => array(
-                        'controller' => 'Auth\Controller\Index',
-                        'action'     => 'simauth'
-                    )
-                )
-            ),
+
             'logout' => array(
                 'type' => 'Literal',
                 'options' => array(
@@ -40,6 +27,16 @@ return array(
                     'defaults' => array(
                         'controller' => 'Auth\Controller\Index',
                         'action'     => 'logout'
+                    )
+                )
+            ),
+            'success-page' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/auth/success-page',
+                    'defaults' => array(
+                        'controller' => 'Auth\Controller\Index',
+                        'action'     => 'success-page'
                     )
                 )
             ),

@@ -18,7 +18,7 @@ class LoginForm extends Form {
             'name'    => 'login',
             'type'    => 'Zend\Form\Element\Email',
             'options' => array(
-                'label' => 'Login'
+                'label' => 'Email'
             ),
             'attributes' => array(
                 'id'          => 'login',
@@ -42,7 +42,7 @@ class LoginForm extends Form {
             'name' => 'submit',
             'type' => 'Zend\Form\Element\Submit',
             'attributes' => array(
-                'value' => 'Войти',
+                'value' => 'log in',
                 'class' => 'btn',
             ),
         ));

@@ -43,23 +43,19 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/">Главная</a>
-                    </li>
-                    <li><a href="<?= $this->url('blogPost', array('action' => 'view'))?>">Статьи</a>
-                    </li>
-                    <li><a href="/">Категории</a>
-                    </li>
+                    
                     <?php $auth = new Zend\Authentication\AuthenticationService();
                      if(!$auth->hasIdentity()){
                     ?>
                     <li><a href="<?= $this->url('auth', array('action' => 'login')) ?>">Войти</a>
                     </li>
+                    <li><a href="<?= $this->url('registration', array('action'=>'index'))?>">Регеистрация</a>
+                    </li>
                      <?php }else{ ?>
                     <li><a href="<?= $this->url('auth') ?>logout">Выйти</a>
                     </li>
                      <?php } ?>
-                    <li><a href="<?= $this->url('registration', array('action'=>'index'))?>">Регестрация</a>
-                    </li>
+                    
                 </ul>
                 
             </div>
@@ -80,7 +76,7 @@
             <hr>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Company 2013</p>
+                    <p>Copyright &copy; av.by test task 2015</p>
                 </div>
             </div>
         </footer>
@@ -88,9 +84,7 @@
     </div>
     <!-- /.container -->
 
-    <!-- JavaScript -->
-<!--    <script src="/js/jquery-1.10.2.js"></script>
-    <script src="/js/bootstrap.js"></script>-->
+
 
 </body>
 

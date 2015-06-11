@@ -41,12 +41,24 @@ class LoginFilter implements InputFilterAwareInterface {
                             array('name' => 'StringTrim'),
                         ),
                         'validators' => array(
+                             array(
+                                'name' =>'NotEmpty', 
+                                  'options' => array(
+                                      'messages' => array(
+                                          \Zend\Validator\NotEmpty::IS_EMPTY => 'Поле не может быть пустым!' 
+                                      ),
+                                  ),
+                              ),
                             array(
                                 'name' => 'StringLength',
                                 'options' => array(
                                     'encoding' => 'UTF-8',
                                     'min' => 2,
-                                    'max' => 255,
+                                    'max' => 20,
+                                    'messages' => array(
+                                        'stringLengthTooShort' => 'Слишком короткий пароль - минимум 3 символа!', 
+                                        'stringLengthTooLong' => 'Слишком длинный пароль - максимум 20 символов!' 
+                                    ),
                                 ),
                             ),
                         ),
@@ -71,10 +83,6 @@ class LoginFilter implements InputFilterAwareInterface {
                         ),
             )));
 
-//            $inputFilter->add($factory->createInput(array(
-//                        'name' => 'remember',
-//                        'required' => false,
-//            )));
 
             $this->inputFilter = $inputFilter;
         }
